@@ -16,7 +16,7 @@ namespace Checkers
     {
         Tree<Move> gameTree;
         CheckerColor aiColor = CheckerColor.Red;
-        private int maxDepth = 2;
+        private int maxDepth = 4;
 
         public CheckerColor AIColor { get => aiColor; set => aiColor = value; }
 
@@ -83,8 +83,8 @@ namespace Checkers
 
             pBoard[move.Source.X, move.Source.Y].Color = CheckerColor.Empty;
             pBoard[move.Source.X, move.Source.Y].Queen = false;
-
-            pBoard[move.Destination.X, move.Destination.Y].Queen = IfQueen(move.Destination.X, pBoard[move.Destination.X, move.Destination.Y].Color);
+            if (pBoard[move.Destination.X, move.Destination.Y].Queen != true)
+                pBoard[move.Destination.X, move.Destination.Y].Queen = IfQueen(move.Destination.X, pBoard[move.Destination.X, move.Destination.Y].Color);
             if (move.Captures.Count > 0) move.Captures.ForEach(mv => ClearPosition(mv.X, mv.Y, pBoard));
             return pBoard;
         }

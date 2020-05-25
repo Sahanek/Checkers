@@ -69,7 +69,7 @@ namespace Checkers
 
             Board[move.Source.X, move.Source.Y].Color = CheckerColor.Empty;
             Board[move.Source.X, move.Source.Y].Queen = false;
-
+            if(Board[move.Destination.X, move.Destination.Y].Queen != true )
             Board[move.Destination.X, move.Destination.Y].Queen = IfQueen(move.Destination.X, Board[move.Destination.X, move.Destination.Y].Color);
             if (move.Captures.Count > 0) move.Captures.ForEach(mv => this.ClearPosition(mv.X,mv.Y));
         }

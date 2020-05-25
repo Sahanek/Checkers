@@ -14,8 +14,11 @@ namespace Checkers
             string lineChecker, lineDestination;
             int checkX, checkY, destX, destY;
             Move moveChecker;
-            while(IfGameContinues(board.Board, CheckerColor.Blue, AI.AIColor))
+            bool rightMove = false;
+            int endGame = 15;
+            while(IfGameContinues(board.Board, CheckerColor.Blue, AI.AIColor) || endGame != 0)
             {
+                
                 board.DrawBoard();
                 checkX = 0;
                 checkY = 0;
@@ -24,6 +27,7 @@ namespace Checkers
                 {
                     do
                     {
+                        rightMove = false;
                         Console.WriteLine("Jesteś graczem niebieskim. Podaj pionka którego chcesz ruszyć w formacie x,y");
                         try
                         {
@@ -43,7 +47,7 @@ namespace Checkers
                     {
 
                         Console.WriteLine("Podaj na jakie miejsce chcesz ruszyć pionka o współrzędnych " +
-                            String.Format("{0} ,{1} formacie x,y", checkX, checkY));
+                            String.Format("{0},{1} formacie x,y", checkX, checkY));
                         try
                         {
                             lineDestination = Console.ReadLine();
@@ -63,8 +67,13 @@ namespace Checkers
 
                     moveChecker = Utils.PossibleMoves(board.Board, new Position(checkX, checkY)).
                         FirstOrDefault(move => move.Destination.X == destX && move.Destination.Y == destY);
+
                     if (moveChecker == null) Console.WriteLine("Niepoprawny ruch!");
-                } while (moveChecker == null);
+                    else if (IfCapture(board.Board, CheckerColor.Blue) && moveChecker.Captures.Count == 0) Console.WriteLine("Masz bicie, wykonaj je!");
+                    else rightMove = true;
+                    if (moveChecker.Captures.Count == 0) --endGame;
+                    else endGame = 15;
+                } while (!rightMove);
                 
                 Console.WriteLine("Wykonałeś ruch!");
                 board.Move(moveChecker);
@@ -76,12 +85,12 @@ namespace Checkers
                 board.DrawBoard();
                 Console.WriteLine("Po wcisnieciu klawisza \"ENTER\" przejdziesz do następnej tury.");
                 Console.ReadLine();
-                //Console.Clear();
+                Console.Clear();
             }
 
             Console.WriteLine("Gra zakonczona");
             Console.ReadLine();
-            
+            Console.Clear();
 
         }
         
@@ -100,6 +109,19 @@ namespace Checkers
                 }
             }
             return playerCanMove && aiCanMove ? true : false; 
+        }
+        //funkcja sprawdzjąca czy gracz ma bicie jesli tak to musi je wykonac
+        private static bool IfCapture(Square[,] board, CheckerColor playerColor)
+        {
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (board[x, y].Color == playerColor && Utils.PossibleMoves(board, new Position(x, y)).FirstOrDefault(move => move.Captures.Count >= 1) != null)
+                        return true;
+                }
+            }
+            return false;
         }
 
     }
