@@ -1,0 +1,10 @@
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\bin\Debug\Checkers.exe.config
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\bin\Debug\Checkers.exe
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\bin\Debug\Checkers.pdb
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.csprojAssemblyReference.cache
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.csproj.CoreCompileInputs.cache
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.exe
+C:\Users\Student248985\Source\Repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.pdb
+C:\Users\Student248985\source\repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.Properties.Resources.resources
+C:\Users\Student248985\source\repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.View.MainWindow.resources
+C:\Users\Student248985\source\repos\PeopleCanDive\Checkers\Checkers\Checkers\obj\Debug\Checkers.csproj.GenerateResource.cache
